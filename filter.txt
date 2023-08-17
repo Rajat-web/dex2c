@@ -1,0 +1,4 @@
+com/google/android/material/navigation/NavigationWidget;.*
+com/google/android/material/navigation/NavigationWidget$1;.*
+com/google/android/material/navigation/NavigationWidget$OnInitializationChange;.*
+cn/wps/moffice/main/framework/BaseActivity;onCreate\(Landroid/os/Bundle;\)V
