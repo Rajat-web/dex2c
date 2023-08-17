@@ -111,7 +111,7 @@ class ApkTool(object):
     def decompile(apk):
         outdir = make_temp_dir("dcc-apktool-")
         check_call(
-            ["java", "-jar", APKTOOL, "d", "--advanced", "-r", "--only-main-classes", "-f", "-o", outdir, apk],
+            ["java", "-Djdk.util.zip.disableZip64ExtraFieldValidation=true", "-jar", APKTOOL, "d", "--advanced", "-r", "--only-main-classes", "-f", "-o", outdir, apk],
             stderr=STDOUT,
         )
         return outdir
@@ -122,6 +122,7 @@ class ApkTool(object):
         check_call(
             [
                 "java",
+                "-Djdk.util.zip.disableZip64ExtraFieldValidation=true",
                 "-jar",
                 APKTOOL,
                 "b",
@@ -189,6 +190,7 @@ def sign(unsigned_apk, signed_apk):
 
     command = [
         "java",
+        "-Djdk.util.zip.disableZip64ExtraFieldValidation=true",
         "-jar",
         SIGNJAR,
         "sign",
@@ -833,6 +835,7 @@ def dcc_main(
                 check_call(
                     [
                         "java",
+                        "-Djdk.util.zip.disableZip64ExtraFieldValidation=true",
                         "-jar",
                         MANIFEST_EDITOR,
                         path.join(decompiled_dir, "AndroidManifest.xml"),
@@ -852,6 +855,7 @@ def dcc_main(
             check_call(
                 [
                     "java",
+                    "-Djdk.util.zip.disableZip64ExtraFieldValidation=true",
                     "-jar",
                     MANIFEST_EDITOR,
                     path.join(decompiled_dir, "AndroidManifest.xml"),
