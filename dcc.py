@@ -208,7 +208,7 @@ def sign(unsigned_apk, signed_apk):
         "pass:" + signature["store_pass"],
     ]
 
-    command.append("--v1-signing-enabled")
+    '''command.append("--v1-signing-enabled")
     command.append("true" if signature["v1_enabled"] is True else "false")
     command.append("--v2-signing-enabled")
     command.append("true" if signature["v2_enabled"] is True else "false")
@@ -229,7 +229,7 @@ def sign(unsigned_apk, signed_apk):
 
     if signature["v3_enabled"] is True:
         change_min_sdk(command, "28", False)
-        change_max_sdk(command, "29")
+        change_max_sdk(command, "29")'''
 
     try:
         check_call(command, stderr=STDOUT)
